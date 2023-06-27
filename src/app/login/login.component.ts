@@ -13,5 +13,8 @@ export class LoginComponent {
       this.userName=user;
       this.userPassword=password;
     }
+    checkAge(ageChecker:number){
+      ageChecker>=21 ? "You are an adult" : ageChecker>=13? "You are a teen ager" : "You are a kid";
+    }
 
 }
