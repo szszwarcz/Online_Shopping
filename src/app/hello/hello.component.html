@@ -1,2 +1,32 @@
-<p>hello works!</p>
-<p style="color: blue; font-size: 20px;"> Hello {{courseName}}</p>
+<div class="container mt-2 border-black border">
+    <div class="container-fluid bg-black text-white">
+        <h2 class="" style="text-align: center;">User profile</h2>
+    </div>
+    
+    <div class="container">
+        <div class="row row-col g-3 p-3">
+            <div class="col col-3 ">
+                <img style="width: 200px;" src="https://i.pinimg.com/474x/ec/e2/b0/ece2b0f541d47e4078aef33ffd22777e.jpg" alt="">
+            </div>
+            <div class="col col-2">
+                <div class="row">Name:</div>
+                <div class="row">Email id:</div>
+                <div class="row">Contact Number:</div>
+                <div class="row">Height:</div>
+                <div class="row">Weight:</div>
+                <div class="row">Qualification:</div>
+                <div class="row">Address:</div>
+                
+            </div>
+            <div class="col col-auto">
+                <div class="row">{{userData.userName}}</div>
+                <div class="row">{{userData.emailId}}</div>
+                <div class="row">{{userData.contactNo}}</div>
+                <div class="row">{{userData.address}}</div>
+                <div class="row">{{userData.height}}</div>
+                <div class="row">{{userData.weight}}</div>
+                <div class="row">{{userData.education}}</div>
+            </div>
+    </div>
+    
+</div>
