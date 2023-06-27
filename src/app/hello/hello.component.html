@@ -1,6 +1,16 @@
 <div style="text-align: center; font-family: Arial, Helvetica, sans-serif; color: blueviolet;">
     <h4>The number {{num}} 
-        <p>is {{num%2 ==0 ? "Even" : "Odd"}}</p></h4>
+        <p>is {{num%2 ==0 ? "Even" : "Odd"}}</p>
+    </h4>
+    <br><br>
+    <h4>
+        <p>
+            this course is {{courseName}}
+        </p>
+    </h4>
     <button  (click)="addNumber()" class="btn btn-lg" type="button">Add 1</button>
     <button (click)="subNumber()" class="btn btn-lg" type="button">Sub 1</button>
+    <br>
+    <input type="text" name="" #inputName>
+    <button (click)="changeNumber(inputName.value)" class="btn btn-lg" type="button">Change the course name</button>
 </div>
