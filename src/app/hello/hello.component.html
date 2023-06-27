@@ -1,2 +1,6 @@
-<p>hello works!</p>
-<p style="color: blue; font-size: 20px;"> Hello {{courseName}}</p>
+<div style="text-align: center; font-family: Arial, Helvetica, sans-serif; color: blueviolet;">
+    <h4>The number {{num}} 
+        <p>is {{num%2 ==0 ? "Even" : "Odd"}}</p></h4>
+    <button  (click)="addNumber()" class="btn btn-lg" type="button">Add 1</button>
+    <button (click)="subNumber()" class="btn btn-lg" type="button">Sub 1</button>
+</div>

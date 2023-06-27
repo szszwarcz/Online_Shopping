@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./hello.component.css']
 })
 export class HelloComponent {
-  courseName:string = "Angular";
-  constructor(){};
-  ngOnInit(){};
+  num:number = 2;
+  addNumber(){
+    this.num++;
+  }
+  subNumber(){
+    this.num--;
+  }
 }
