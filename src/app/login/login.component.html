@@ -6,21 +6,17 @@
         </div>
         <div class="card-body">
             <div class="form-floating mb-3">
-                <input class="form-control" type="text" #userName2 name="">
+                <input class="form-control" type="text" #userName2 [(ngModel)]="userName" name="">
                 <label class="form-label" for="">User Name</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="password" class="form-control"#userPassword2 name="">
+                <input type="password" class="form-control"#userPassword2 [(ngModel)]="userPassword" name="">
                 <label class="form-label" for="">Password</label>
             </div>
-            <img [src]='imgUrl' width="200" alt="">
-            <input type="text" id="userName" value="john doe">
         </div>
         <div class="card-footer">
             <button (click)=" clickme(userName2.value,userPassword2.value)" class="btn btn-primary" type="button">Login</button>
         </div>
+        <div>{{users[0].userName + " "+users[0].userPassword}}</div>
     </div>
 </div>
-<button [style.color]="applyClass? 'black':'white'" [style.background-color]="applyClass? 'orange':'greenyellow'">Click</button>
-<button [style]="applyClass? styleObj1:styleObj2">Clickingus</button>
-<button [class.btn-success]="applyClass" [class.btn]="applyClass">Click Me</button><br><br>
