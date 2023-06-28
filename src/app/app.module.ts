@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { LoginComponent } from './login/login.component';
 import { BookARideComponent } from './book-a-ride/book-a-ride.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BookARideComponent } from './book-a-ride/book-a-ride.component';
     BookARideComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
