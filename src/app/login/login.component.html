@@ -1,22 +1,55 @@
 
 <div class="container p-2 mt-5">
-    <div class="card mx-auto" style="width: 18rem;">
+    <div class="card mx-auto" style="width: 18rem;" *ngIf="!loginSuccess && !loginFailed">
         <div class="card-header bg-dark-subtle">
             <h3 class="card-title">Login</h3>
         </div>
         <div class="card-body">
-            <div class="form-floating mb-3">
-                <input class="form-control" type="text" #userName2 [(ngModel)]="userName" name="">
-                <label class="form-label" for="">User Name</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control"#userPassword2 [(ngModel)]="userPassword" name="">
-                <label class="form-label" for="">Password</label>
-            </div>
+            <form class="" action="">
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" name="userName" [(ngModel)]="userName"  required>
+                    <label class="form-label" for="">User Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="userPassword" [(ngModel)]="userPassword"  required>
+                    <label class="form-label" for="">Password</label>
+                </div>
+                <div class="row">
+                    <ul *ngFor="let course of coursers; let i = index">
+                        {{i}} - {{course}}
+                    </ul>
+                </div>
+                <div [ngSwitch]="numero" class="row">
+                    <p *ngSwitchCase="1">First choice</p>
+                    <p *ngSwitchCase="2">Sechond choice</p>
+                    <p *ngSwitchCase="3">Third choice</p>
+                    <p *ngSwitchCase="4">Fourth choice</p>
+                    <p *ngSwitchCase="5">Fifth choice</p>
+                    <p *ngSwitchDefault="">Od zera wariacie</p>
+                </div>
+                <div class="row">
+                    <button (click)="increment()" class="btn btn-primary">Add one for the switch</button>
+                </div>
+                <div class="row" [ngClass]="{ bordered : isBordered}">
+                    Border {{isBordered?"ON" : "OFF"}}
+
+                </div>
+            </form>  
         </div>
         <div class="card-footer">
-            <button (click)=" clickme(userName2.value,userPassword2.value)" class="btn btn-primary" type="button">Login</button>
+            <div class="row">
+                <button (click)="Login2()" class="btn btn-primary" type="button" >Login</button>
+            </div>
+            
         </div>
-        <div>{{users[0].userName + " "+users[0].userPassword}}</div>
+    </div>
+    <div class="text-center" *ngIf="loginFailed">
+        <h4 class="text-danger">Invalid Credentials</h4>
+    </div>
+    <div class="text-center" *ngIf="loginSuccess">
+        <h4 class="text-bg-success">Welcome {{userName}}</h4>
+    </div>
+    <div class="text-center" *ngIf="loginSuccess || loginFailed">
+        <button class="btn btn-outline-warning" (click)="loginSuccess=loginFailed=false">Go back</button>
     </div>
 </div>
