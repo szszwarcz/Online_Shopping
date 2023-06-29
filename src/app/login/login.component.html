@@ -19,21 +19,11 @@
                         {{i}} - {{course}}
                     </ul>
                 </div>
-                <div [ngSwitch]="numero" class="row">
-                    <p *ngSwitchCase="1">First choice</p>
-                    <p *ngSwitchCase="2">Sechond choice</p>
-                    <p *ngSwitchCase="3">Third choice</p>
-                    <p *ngSwitchCase="4">Fourth choice</p>
-                    <p *ngSwitchCase="5">Fifth choice</p>
-                    <p *ngSwitchDefault="">Od zera wariacie</p>
-                </div>
+
                 <div class="row">
                     <button (click)="increment()" class="btn btn-primary">Add one for the switch</button>
                 </div>
-                <div class="row" [ngClass]="{ bordered : isBordered}">
-                    Border {{isBordered?"ON" : "OFF"}}
-
-                </div>
+ 
             </form>  
         </div>
         <div class="card-footer">
