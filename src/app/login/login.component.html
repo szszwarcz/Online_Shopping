@@ -9,21 +9,16 @@
                 <div class="form-floating mb-3">
                     <input class="form-control" type="text" name="userName" [(ngModel)]="userName"  required>
                     <label class="form-label" for="">User Name</label>
+                    
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="userPassword" [(ngModel)]="userPassword"  required>
+                    <input type="password" class="form-control" name="userPassword" [(ngModel)]="userPassword" (input)="checkPasswordStrength()"  required>
                     <label class="form-label" for="">Password</label>
-                </div>
-                <div class="row">
-                    <ul *ngFor="let course of coursers; let i = index">
-                        {{i}} - {{course}}
-                    </ul>
-                </div>
+                    <p *ngIf="passwordStrength.hasLowercase && passwordStrength.hasUppercase && passwordStrength.hasNumber&&passwordStrength.isLengthy">Your password strong</p>
+                    <p *ngIf="passwordStrength.hasLowercase && passwordStrength.hasUppercase && passwordStrength.hasNumber&&passwordStrength.isLengthy">Good password</p>
+                    <p *ngIf="passwordStrength.hasLowercase && passwordStrength.hasUppercase && passwordStrength.hasNumber">Weak password</p>
 
-                <div class="row">
-                    <button (click)="increment()" class="btn btn-primary">Add one for the switch</button>
                 </div>
- 
             </form>  
         </div>
         <div class="card-footer">

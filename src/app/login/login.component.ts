@@ -7,14 +7,22 @@ import { FormBuilder,FormGroup } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   isBordered : boolean = true;
   numero : number = 0;
-  users : Login[] = [];
   userName = "";
   userPassword = "";
   loginSuccess = false;
   loginFailed = false;
   coursers:string[] = ["Angular", "React","JavaScript"]
+
+  passwordStrength = {
+    isLengthy: false,
+    hasUppercase: false,
+    hasLowercase: false,
+    hasNumber: false
+  };
+
   increment(){
     if(this.numero != 6){
       this.numero++;
@@ -35,17 +43,14 @@ export class LoginComponent {
     }
   }
 
-  clickme(user:string,password:string){
-    let loginTemp = new Login(user,password);
-    this.users.push(loginTemp);
+  checkPasswordStrength(){
+    const userPassword = this.userPassword;
+
+    this.passwordStrength.hasLowercase = /[a-z]+/.test(userPassword);
+    this.passwordStrength.hasNumber = /\d/.test(userPassword);
+    this.passwordStrength.hasUppercase = /[A-Z]+/.test(userPassword);
+    this.passwordStrength.isLengthy = userPassword.length>=8;
+
   }
 }
 
-class Login{
-  userName:string;
-  userPassword:string;
-  constructor(user:string,password:string) {
-    this.userName=user;
-    this.userPassword=password;
-  }
-}
