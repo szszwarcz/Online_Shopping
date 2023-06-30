@@ -6,6 +6,7 @@ import { HelloComponent } from './hello/hello.component';
 import { LoginComponent } from './login/login.component';
 import { BookARideComponent } from './book-a-ride/book-a-ride.component';
 import { FormsModule } from '@angular/forms';
+import { MyPipelinePipe } from './my-pipeline.pipe';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     HelloComponent,
     LoginComponent,
     BookARideComponent,
+    MyPipelinePipe,
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@
                     <p *ngIf="passwordStrength.hasLowercase && passwordStrength.hasUppercase && passwordStrength.hasNumber&&passwordStrength.isLengthy">Your password strong</p>
                     <p *ngIf="passwordStrength.hasLowercase && passwordStrength.hasUppercase && passwordStrength.hasNumber&&passwordStrength.isLengthy">Good password</p>
                     <p *ngIf="passwordStrength.hasLowercase && passwordStrength.hasUppercase && passwordStrength.hasNumber">Weak password</p>
-
+                    <p>{{userName | myPipeline : "F"}}</p>
                 </div>
             </form>  
         </div>
