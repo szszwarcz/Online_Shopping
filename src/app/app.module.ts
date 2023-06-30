@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { BookARideComponent } from './book-a-ride/book-a-ride.component';
 import { FormsModule } from '@angular/forms';
 import { MyPipelinePipe } from './my-pipeline.pipe';
+import { SortByPipe } from './sort-by.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MyPipelinePipe } from './my-pipeline.pipe';
     LoginComponent,
     BookARideComponent,
     MyPipelinePipe,
+    SortByPipe,
   ],
   imports: [
     BrowserModule,

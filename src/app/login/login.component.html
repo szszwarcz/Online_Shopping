@@ -17,7 +17,6 @@
                     <p *ngIf="passwordStrength.hasLowercase && passwordStrength.hasUppercase && passwordStrength.hasNumber&&passwordStrength.isLengthy">Your password strong</p>
                     <p *ngIf="passwordStrength.hasLowercase && passwordStrength.hasUppercase && passwordStrength.hasNumber&&passwordStrength.isLengthy">Good password</p>
                     <p *ngIf="passwordStrength.hasLowercase && passwordStrength.hasUppercase && passwordStrength.hasNumber">Weak password</p>
-                    <p>{{userName | myPipeline : "F"}}</p>
                 </div>
             </form>  
         </div>
@@ -36,5 +35,15 @@
     </div>
     <div class="text-center" *ngIf="loginSuccess || loginFailed">
         <button class="btn btn-outline-warning" (click)="loginSuccess=loginFailed=false">Go back</button>
+    </div>
+    <div>
+        <select [(ngModel)]="sortation" >
+            <option value="prodName">Name A-Z</option>
+            <option value="price">Price lowest</option>
+        </select>
+        
+    </div>
+    <div *ngFor="let prod of productsList | sortBy:sortation">
+        <p>{{prod.productName}} - {{prod.price}}</p>
     </div>
 </div>

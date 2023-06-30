@@ -8,6 +8,12 @@ import { FormBuilder,FormGroup } from '@angular/forms';
 })
 export class LoginComponent {
 
+  sortation : string = "prodName";
+  productsList = [
+    {productName : "Samsung",price : 18000},
+    {productName : "Apple",price : 20000},
+    {productName : "Nokia",price : 33000}
+  ]
   isBordered : boolean = true;
   numero : number = 0;
   userName = "";
