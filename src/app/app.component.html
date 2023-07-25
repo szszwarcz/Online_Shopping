@@ -10,4 +10,17 @@
 
 <button class="btn btn-primary" (click)="fetchData()">Fetch data</button>
 <button class="btn btn-primary" (click)="display()">Fetch data</button> -->
-<app-espresso-machine></app-espresso-machine>
+<div class="container mt-5 text-center rounded-3 text-light" style="background-color: #ceb5a7;">
+    <h3 class="p-3">Choose your brewing method</h3>
+    <div class="row row-cols-3 mr-2 ">
+        <div class="col">
+            <app-cards [vidSource]="sourceEspressoMachine" [brewingMethod]="espressoMachine"></app-cards>
+        </div>
+        <div class="col">
+            <app-cards [vidSource]="sourceV60" [brewingMethod]="v60"></app-cards>
+        </div>
+        <div class="col">
+            <app-cards [vidSource]="sourceEspressoMachine" [brewingMethod]="espressoMachine"></app-cards>
+        </div>
+    </div>
+</div>

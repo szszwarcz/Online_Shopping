@@ -11,6 +11,12 @@ export class AppComponent {
   myArray : number[] = [];
   errors!: boolean;
   finished!: boolean;
+  sourceEspressoMachine = '../../assets/Vids/Espresso.mp4';
+  espressoMachine = 'Espresso Machine';
+  sourceV60 = '../../assets/Vids/V60.mp4';
+  v60 = 'V60';
+
+
 
   fetchData(){
     this.finished=false;
