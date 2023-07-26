@@ -13,9 +13,23 @@ export class AppComponent {
   finished!: boolean;
   sourceEspressoMachine = '../../assets/Vids/Espresso.mp4';
   espressoMachine = 'Espresso Machine';
+
   sourceV60 = '../../assets/Vids/V60.mp4';
   v60 = 'V60';
 
+  sourceFrenchPress = '../../assets/Vids/FrenchPress.mp4'
+  frenchPress = 'French Press'
+  
+  sourceAeroPress = '../../assets/Vids/AeroPress.mp4';
+  aeroPress = 'Aero Press';
+
+  sourceMochaPot = '../../assets/Vids/MochaPot.mp4';
+  mochaPot = 'Mocha Pot';
+
+  sourceTurkishCoffee = '../../assets/Vids/TurkishCoffee.mp4';
+  turkishCoffee = 'Turkish Coffee';
+  
+  
 
 
   fetchData(){
