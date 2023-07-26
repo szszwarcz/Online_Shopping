@@ -9,15 +9,15 @@ export class CardsComponent {
   thisExpand = false;
   restCollapse = false;
   @Output() colappseEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() nameEvent : EventEmitter<string> = new EventEmitter<string>();
+  @Output() nameEvent: EventEmitter<string> = new EventEmitter<string>();
 
   @Input() brewingMethod = '';
   @Input() vidSource = '';
 
-  emitEvent(output:boolean){
+  emitEvent(output: boolean) {
     this.colappseEvent.emit(output);
   }
-  emitEvent2(){
+  emitEvent2() {
     this.nameEvent.emit(this.brewingMethod);
   }
 }

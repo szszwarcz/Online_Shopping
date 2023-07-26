@@ -8,10 +8,10 @@ import { Observable, of } from 'rxjs';
 })
 export class AppComponent {
   data!: Observable<number>;
-  myArray : number[] = [];
+  myArray: number[] = [];
   errors!: boolean;
   finished!: boolean;
-  methodName : string = "";
+  methodName: string = "";
   sourceEspressoMachine = '../../assets/Vids/Espresso.mp4';
   espressoMachine = 'Espresso Machine';
 
@@ -20,7 +20,7 @@ export class AppComponent {
 
   sourceFrenchPress = '../../assets/Vids/FrenchPress.mp4'
   frenchPress = 'French Press'
-  
+
   sourceAeroPress = '../../assets/Vids/AeroPress.mp4';
   aeroPress = 'Aero Press';
 
@@ -29,32 +29,32 @@ export class AppComponent {
 
   sourceTurkishCoffee = '../../assets/Vids/TurkishCoffee.mp4';
   turkishCoffee = 'Turkish Coffee';
-  
-  restCollapse : boolean = false;
-  
-  nameChange($event:string){
+
+  restCollapse: boolean = false;
+
+  nameChange($event: string) {
     this.methodName = $event;
   }
 
-  colappseRest($event:boolean){
+  colappseRest($event: boolean) {
     this.restCollapse = $event;
   }
-  fetchData(){
-    this.finished=false;
-    this.data = new Observable(observer =>{
-      setTimeout(() => {observer.next(11);},1000),
-      setTimeout(() => {observer.next(12);},2000),
-      setTimeout(() => {observer.complete();},3000)
-      });
+  fetchData() {
+    this.finished = false;
+    this.data = new Observable(observer => {
+      setTimeout(() => { observer.next(11); }, 1000),
+        setTimeout(() => { observer.next(12); }, 2000),
+        setTimeout(() => { observer.complete(); }, 3000)
+    });
 
-    let sub = this.data.subscribe((value) => this.myArray.push(value),error => this.errors =true, ()=> this.finished = true);
+    let sub = this.data.subscribe((value) => this.myArray.push(value), error => this.errors = true, () => this.finished = true);
   }
 
-  myObservable:Observable<number> = of(1,2,3);
-  myObservable2:Observable<number[]> = of([1,2,3],[4,5,6],[7,8,9]);
+  myObservable: Observable<number> = of(1, 2, 3);
+  myObservable2: Observable<number[]> = of([1, 2, 3], [4, 5, 6], [7, 8, 9]);
 
-  display(){
-    this.myObservable.subscribe(data=>console.log(data));
-    this.myObservable2.subscribe(data=>console.log(data));
+  display() {
+    this.myObservable.subscribe(data => console.log(data));
+    this.myObservable2.subscribe(data => console.log(data));
   }
 }

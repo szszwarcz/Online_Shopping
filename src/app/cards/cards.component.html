@@ -1,7 +1,8 @@
 <div class="col">
     <div class="card" [class.expanded]="this">
         <div class="card-header text-center">
-            <button class="btn" (click)="thisExpand=!thisExpand; restCollapse=!restCollapse; emitEvent(restCollapse); emitEvent2()">{{brewingMethod}}</button>
+            <button class="btn"
+                (click)="thisExpand=!thisExpand; restCollapse=!restCollapse; emitEvent(restCollapse); emitEvent2()">{{brewingMethod}}</button>
         </div>
         <div class="card-body text-center">
             <div>
