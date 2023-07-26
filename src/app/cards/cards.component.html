@@ -1,16 +1,14 @@
-<div class="col">
-    <div class="card" [class.expanded]="this">
-        <div class="card-header text-center">
-            <button class="btn"
-                (click)="thisExpand=!thisExpand; restCollapse=!restCollapse; emitEvent(restCollapse); emitEvent2()">{{brewingMethod}}</button>
-        </div>
-        <div class="card-body text-center">
-            <div>
-                <video class="object-fit-contain border rounded" onmouseover="this.play()" onmouseout="this.pause()"
-                    height="140" loop muted>
-                    <source src="{{vidSource}}" type="video/mp4">
-                </video>
-            </div>
+<div class="container" style="background-color:F5F5F5 ;" [class.expanded]="this">
+    <div class="">
+        <button class="btn"
+            (click)="thisExpand=!thisExpand; restCollapse=!restCollapse; emitEvent(restCollapse); emitEvent2()">{{brewingMethod}}</button>
+    </div>
+    <div class="">
+        <div>
+            <video class="object-fit-contain border rounded" onmouseover="this.play()" onmouseout="this.pause()"
+                height="200" loop muted>
+                <source src="{{vidSource}}" type="video/mp4">
+            </video>
         </div>
     </div>
 </div>

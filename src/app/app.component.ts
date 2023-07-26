@@ -16,7 +16,7 @@ export class AppComponent {
   espressoMachine = 'Espresso Machine';
 
   sourceV60 = '../../assets/Vids/V60.mp4';
-  v60 = 'V60';
+  v60 = 'V60 Brewer';
 
   sourceFrenchPress = '../../assets/Vids/FrenchPress.mp4'
   frenchPress = 'French Press'
