@@ -13,23 +13,45 @@
 <div class="container mt-5 text-center rounded-3 text-light" style="background-color: #ceb5a7;">
     <h3 class="p-3">Choose your brewing method</h3>
     <div class="row row-cols-3 mr-2 ">
-        <div class="col">
-            <app-cards [vidSource]="sourceEspressoMachine" [brewingMethod]="espressoMachine"></app-cards>
+        <div class="col" *ngIf="!restCollapse">
+            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)" [vidSource]="sourceEspressoMachine" [brewingMethod]="espressoMachine"></app-cards>
         </div>
-        <div class="col">
-            <app-cards [vidSource]="sourceV60" [brewingMethod]="v60"></app-cards>
+        <div class="col"*ngIf="!restCollapse">
+            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)" [vidSource]="sourceV60" [brewingMethod]="v60"></app-cards>
         </div>
-        <div class="col">
-            <app-cards [vidSource]="sourceFrenchPress" [brewingMethod]="frenchPress"></app-cards>
+        <div class="col"*ngIf="!restCollapse">
+            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)" [vidSource]="sourceFrenchPress" [brewingMethod]="frenchPress"></app-cards>
         </div>
-        <div class="col">
-            <app-cards [vidSource]="sourceAeroPress" [brewingMethod]="aeroPress"></app-cards>
+        <div class="col"*ngIf="!restCollapse">
+            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)" [vidSource]="sourceAeroPress" [brewingMethod]="aeroPress"></app-cards>
         </div>
-        <div class="col">
-            <app-cards [vidSource]="sourceMochaPot" [brewingMethod]="mochaPot"></app-cards>
+        <div class="col"*ngIf="!restCollapse">
+            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)" [vidSource]="sourceMochaPot" [brewingMethod]="mochaPot"></app-cards>
         </div>
-        <div class="col">
-            <app-cards [vidSource]="sourceTurkishCoffee" [brewingMethod]="turkishCoffee"></app-cards>
+        <div class="col"*ngIf="!restCollapse">
+            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)" [vidSource]="sourceTurkishCoffee" [brewingMethod]="turkishCoffee"></app-cards>
         </div>
     </div>
+    <div *ngIf="restCollapse">
+        <div class="col" *ngIf="methodName===espressoMachine || !restCollapse">
+            <app-espresso-machine></app-espresso-machine>
+        </div>
+        <div class="col" *ngIf="methodName===v60 || !restCollapse">
+            <app-v60></app-v60>
+        </div>
+        <div class="col" *ngIf="methodName===frenchPress || !restCollapse">
+            <app-french-press></app-french-press>
+        </div>
+        <div class="col" *ngIf="methodName===aeroPress || !restCollapse">
+            <app-areo-press></app-areo-press>
+        </div>
+        <div class="col" *ngIf="methodName===mochaPot || !restCollapse">
+            <app-mocha-pot></app-mocha-pot>
+        </div>
+        <div class="col" *ngIf="methodName===turkishCoffee || !restCollapse">
+            <app-turkish-coffee></app-turkish-coffee>
+        </div>
+    </div>
+    
+    
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cards',
@@ -6,8 +6,18 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent {
-  v60ExpandTrue = false;
-  v60ExpandFalse = true;
+  thisExpand = false;
+  restCollapse = false;
+  @Output() colappseEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() nameEvent : EventEmitter<string> = new EventEmitter<string>();
+
   @Input() brewingMethod = '';
   @Input() vidSource = '';
+
+  emitEvent(output:boolean){
+    this.colappseEvent.emit(output);
+  }
+  emitEvent2(){
+    this.nameEvent.emit(this.brewingMethod);
+  }
 }

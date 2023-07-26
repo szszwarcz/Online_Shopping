@@ -11,6 +11,7 @@ export class AppComponent {
   myArray : number[] = [];
   errors!: boolean;
   finished!: boolean;
+  methodName : string = "";
   sourceEspressoMachine = '../../assets/Vids/Espresso.mp4';
   espressoMachine = 'Espresso Machine';
 
@@ -29,9 +30,15 @@ export class AppComponent {
   sourceTurkishCoffee = '../../assets/Vids/TurkishCoffee.mp4';
   turkishCoffee = 'Turkish Coffee';
   
+  restCollapse : boolean = false;
   
+  nameChange($event:string){
+    this.methodName = $event;
+  }
 
-
+  colappseRest($event:boolean){
+    this.restCollapse = $event;
+  }
   fetchData(){
     this.finished=false;
     this.data = new Observable(observer =>{

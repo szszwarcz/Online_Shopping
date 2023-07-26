@@ -1,13 +1,10 @@
 <div class="col">
-    <div class="card" [class.expanded]="v60ExpandFalse">
+    <div class="card" [class.expanded]="this">
         <div class="card-header text-center">
-            <button class="btn" (click)="v60ExpandFalse=!v60ExpandFalse">{{brewingMethod}}</button>
+            <button class="btn" (click)="thisExpand=!thisExpand; restCollapse=!restCollapse; emitEvent(restCollapse); emitEvent2()">{{brewingMethod}}</button>
         </div>
         <div class="card-body text-center">
-            <div *ngIf="!v60ExpandFalse">
-                <app-v60></app-v60>
-            </div>
-            <div *ngIf="v60ExpandFalse">
+            <div>
                 <video class="object-fit-contain border rounded" onmouseover="this.play()" onmouseout="this.pause()"
                     height="140" loop muted>
                     <source src="{{vidSource}}" type="video/mp4">
