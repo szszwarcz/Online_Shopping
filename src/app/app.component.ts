@@ -57,4 +57,33 @@ export class AppComponent {
     this.myObservable.subscribe(data => console.log(data));
     this.myObservable2.subscribe(data => console.log(data));
   }
+
+   productArr : Product[]=[
+    new Product(100,"Mobile",10000,1),
+    new Product(101,"Bag",500,1),
+    new Product(102,"Shoe",400,1),
+    new Product(103,"Groceries",2000,1),
+    new Product(104,"Laptop",35000,1),
+  ]
+
+  calculateSum(prodArr:Product[]):number{
+    let sum=0;
+    prodArr.forEach(element => sum+=element.price*element.quantity)
+    return sum;
+  } 
+
+}
+
+class Product{
+  id:number;
+  category:string;
+  price:number;
+  quantity:number;
+  constructor(id:number,categorty:string,price:number,quantity:number){
+    this.id=id;
+    this.category=categorty;
+    this.price=price;
+    this.quantity=quantity;
+  }
+
 }

@@ -10,11 +10,11 @@
 
 <button class="btn btn-primary" (click)="fetchData()">Fetch data</button>
 <button class="btn btn-primary" (click)="display()">Fetch data</button> -->
-<div  class="container mx-auto rounded-3 text-dark">
+<div class="container mx-auto rounded-3 text-dark">
     <h3 *ngIf="!restCollapse" class="p-3">Choose your brewing method</h3>
     <div *ngIf="!restCollapse" class="row row-cols-3">
-            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)"
-                [vidSource]="sourceEspressoMachine" [brewingMethod]="espressoMachine"></app-cards>
+        <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)"
+            [vidSource]="sourceEspressoMachine" [brewingMethod]="espressoMachine"></app-cards>
         <div class="col-sm" *ngIf="!restCollapse">
             <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)" [vidSource]="sourceV60"
                 [brewingMethod]="v60"></app-cards>
@@ -42,7 +42,10 @@
             <app-espresso-machine></app-espresso-machine>
         </div>
         <div class="col" *ngIf="methodName===v60 || !restCollapse">
-            <button class="btn p-3" style="color: aliceblue; font-size: larger; font-weight: 500;" (click)="restCollapse=!restCollapse"><h3>V60 Brewing Method</h3></button>
+            <button class="btn p-3" style="color: aliceblue; font-size: larger; font-weight: 500;"
+                (click)="restCollapse=!restCollapse">
+                <h3>V60 Brewing Method</h3>
+            </button>
             <app-v60></app-v60>
         </div>
         <div class="col" *ngIf="methodName===frenchPress || !restCollapse">
@@ -62,6 +65,20 @@
             <app-turkish-coffee></app-turkish-coffee>
         </div>
     </div>
-
+    <table class="table">
+        <thead>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of productArr">
+                <th><button (click)="productArr.splice(productArr.indexOf(item),1)" class="btn btn-primary">Delete item</button></th>
+                <th>{{item.id}}</th>
+                <th>{{item.category}}</th>
+                <th>{{item.price}}</th>
+                <th><input [(ngModel)]="item.quantity" type="number" name="" id=""></th>
+                <th *ngIf="item.quantity<=0">Please enter valid quantity</th>
+            </tr>
+            <tr>Price:{{calculateSum(productArr)}}</tr>
+        </tbody>
+    </table>
 
 </div>
