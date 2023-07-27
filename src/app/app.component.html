@@ -80,5 +80,16 @@
             <tr>Price:{{calculateSum(productArr)}}</tr>
         </tbody>
     </table>
+    <div>
+        <h2>Using Observables</h2>
+        <div>
+            <p *ngFor="let item of myArray">{{item}}</p>
+            <p>{{errors}}</p>
+            <p>{{finished}}</p>
+        </div>
+        <button type="button" class="btn btn-default" (click)="fetchData()">
+            Press Me Hard
+        </button>
+    </div>
 
 </div>

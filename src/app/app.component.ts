@@ -7,10 +7,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  data!: Observable<number>;
-  myArray: number[] = [];
-  errors!: boolean;
-  finished!: boolean;
+
   methodName: string = "";
   sourceEspressoMachine = '../../assets/Vids/Espresso.mp4';
   espressoMachine = 'Espresso Machine';
@@ -39,17 +36,21 @@ export class AppComponent {
   colappseRest($event: boolean) {
     this.restCollapse = $event;
   }
+  data!: Observable<number>;
+  myArray: number[] = [];
+  errors!: boolean;
+  finished!: boolean;
+
   fetchData() {
     this.finished = false;
     this.data = new Observable(observer => {
-      setTimeout(() => { observer.next(11); }, 1000),
+        setTimeout(() => { observer.next(11); }, 1000),
         setTimeout(() => { observer.next(12); }, 2000),
-        setTimeout(() => { observer.complete(); }, 3000)
+        setTimeout(() => {observer.next(13);},3000)
+        setTimeout(() => { observer.complete(); }, 4000)
     });
-
     let sub = this.data.subscribe((value) => this.myArray.push(value), error => this.errors = true, () => this.finished = true);
   }
-
   myObservable: Observable<number> = of(1, 2, 3);
   myObservable2: Observable<number[]> = of([1, 2, 3], [4, 5, 6], [7, 8, 9]);
 
@@ -58,32 +59,32 @@ export class AppComponent {
     this.myObservable2.subscribe(data => console.log(data));
   }
 
-   productArr : Product[]=[
-    new Product(100,"Mobile",10000,1),
-    new Product(101,"Bag",500,1),
-    new Product(102,"Shoe",400,1),
-    new Product(103,"Groceries",2000,1),
-    new Product(104,"Laptop",35000,1),
+  productArr: Product[] = [
+    new Product(100, "Mobile", 10000, 1),
+    new Product(101, "Bag", 500, 1),
+    new Product(102, "Shoe", 400, 1),
+    new Product(103, "Groceries", 2000, 1),
+    new Product(104, "Laptop", 35000, 1),
   ]
 
-  calculateSum(prodArr:Product[]):number{
-    let sum=0;
-    prodArr.forEach(element => sum+=element.price*element.quantity)
+  calculateSum(prodArr: Product[]): number {
+    let sum = 0;
+    prodArr.forEach(element => sum += element.price * element.quantity)
     return sum;
-  } 
+  }
 
 }
 
-class Product{
-  id:number;
-  category:string;
-  price:number;
-  quantity:number;
-  constructor(id:number,categorty:string,price:number,quantity:number){
-    this.id=id;
-    this.category=categorty;
-    this.price=price;
-    this.quantity=quantity;
+class Product {
+  id: number;
+  category: string;
+  price: number;
+  quantity: number;
+  constructor(id: number, categorty: string, price: number, quantity: number) {
+    this.id = id;
+    this.category = categorty;
+    this.price = price;
+    this.quantity = quantity;
   }
 
 }
