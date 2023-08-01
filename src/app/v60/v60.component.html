@@ -1,19 +1,191 @@
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Art of V60 Coffee Brewing</h5>
-        <p class="card-text">
-            Welcome to the world of V60 coffee brewing, where precision meets flavor. The V60 pour-over method is
-            renowned among coffee enthusiasts for its ability to extract the delicate nuances of your favorite beans,
-            resulting in a clean, aromatic, and rich cup of coffee. Whether you're a seasoned barista or a curious
-            coffee lover, mastering the V60 technique will elevate your coffee game to new heights. Join us as we delve
-            into the step-by-step process of brewing a perfect cup using the iconic V60 dripper.</p>
+<div class="card mt-3">
+  <div class="card-body">
+    <h5 class="card-title">Art of V60 Coffee Brewing</h5>
+    <p class="card-text">
+      Welcome to the world of V60 coffee brewing, where precision meets flavor.
+      The V60 pour-over method is renowned among coffee enthusiasts for its
+      ability to extract the delicate nuances of your favorite beans, resulting
+      in a clean, aromatic, and rich cup of coffee. Whether you're a seasoned
+      barista or a curious coffee lover, mastering the V60 technique will
+      elevate your coffee game to new heights. Join us as we delve into the
+      step-by-step process of brewing a perfect cup using the iconic V60
+      dripper.
+    </p>
+    <p class="card-text">You will need:</p>
+    <ul>
+      <li>Hario V60 dripper</li>
+      <li>V60 paper filter</li>
+      <li>Freshly roasted coffee beans</li>
+      <li>Coffee grinder</li>
+      <li>Gooseneck kettle</li>
+      <li>Digital scale</li>
+      <li>Timer</li>
+      <li>Coffee cup</li>
+    </ul>
+    <label for="">Choose V60 brewing method:</label>
+    <br /><br />
+    <select
+      [(ngModel)]="selectedMethod"
+      class="form-select"
+      aria-label="Select V60 method"
+    >
+      <option *ngFor="let method of V60Methods" [value]="method">
+        {{ method }}
+      </option>
+    </select>
+    <br />
+    <div [ngSwitch]="V60Methods.indexOf(selectedMethod)">
+      <div class="container-flex" *ngSwitchCase="0">
+        Tetsu Kasuya, the 2016 World Brewers Cup champion, is renowned for his
+        innovative and precise approach to coffee brewing. The 4:6 Method is his
+        unique pour-over technique, designed to control and manipulate the
+        coffee's taste profile by adjusting the ratio of water poured during
+        different stages of the brewing process. This method allows coffee
+        enthusiasts to fine-tune the acidity and sweetness of their cup,
+        resulting in a more customized and flavorful experience.
+        <br /><br />
+        <h6>Steps for Tetsu Kasuya's 4:6 Method:</h6>
+        <ol>
+          <li *ngFor="let item of tetsuKasuyaMethod">{{ item }} <br /></li>
+        </ol>
+      </div>
+      <div *ngSwitchCase="1">put</div>
+      <div *ngSwitchCase="2">out</div>
+      <div *ngSwitchCase="3">put</div>
+      <div *ngSwitchCase="4">out</div>
+      <div *ngSwitchDefault></div>
     </div>
 
+    <div class="container-flex">
+      <h5>Choose flavour</h5>
+      <div class="form-group">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="group1"
+            id="flexRadioDefault1"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            Standard
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="group1"
+            id="flexRadioDefault2"
+          />
+          <label class="form-check-label" for="flexRadioDefault2">
+            Sweeter
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="group1"
+            id="flexRadioDefault1"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            Brighter
+          </label>
+        </div>
+      </div>
+
+      <h5>Choose intensity</h5>
+      <div class="form-group">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="group2"
+            id="flexRadioDefault2"
+          />
+          <label class="form-check-label" for="flexRadioDefault2">
+            Lighter
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="group2"
+            id="flexRadioDefault1"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            Stronger
+          </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="group2"
+            id="flexRadioDefault2"
+          />
+          <label class="form-check-label" for="flexRadioDefault2">
+            Strongest
+          </label>
+        </div>
+      </div>
+      <br />
+      <div class="mb-3">
+        <label for="" class="form-label">Enter ammount of water:</label>
+        <input
+          type="number"
+          [(ngModel)]="wholeBrew"
+          class="form-control"
+          name=""
+          id=""
+          aria-describedby="helpId"
+          placeholder=""
+        />
+        <small id="helpId" class="form-text text-muted">Help text</small>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Pour</th>
+            <th scope="col">Time</th>
+            <th scope="col">Water Added</th>
+            <th scope="col">Cumulative Water</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>0:00-0:45</td>
+            <td>{{ wholeBrew / 5 }}g</td>
+            <td>{{ wholeBrew / 5 }}g</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>0:45-1:30</td>
+            <td>{{ wholeBrew / 5 }}g</td>
+            <td>{{ (wholeBrew * 2) / 5 }}g</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>1:30-2:15</td>
+            <td>{{ wholeBrew / 5 }}g</td>
+            <td>{{ (wholeBrew * 3) / 5 }}g</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>2:15-3:00</td>
+            <td>{{ wholeBrew / 5 }}g</td>
+            <td>{{ (wholeBrew * 4) / 5 }}g</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>3:00-3:45</td>
+            <td>{{ wholeBrew / 5 }}g</td>
+            <td>{{ wholeBrew }}g</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<label for="method"></label>
-<select class="form-select" name="method" id="method">
-    <option selected>Select brewing method</option>
-    <option value="">Tetsu Kasuya's 4:6</option>
-    <option value="">James Hoffman's</option>
-    <option value="">Hario's</option>
-</select>
