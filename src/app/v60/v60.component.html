@@ -36,18 +36,8 @@
     <br />
     <div [ngSwitch]="V60Methods.indexOf(selectedMethod)">
       <div class="container-flex" *ngSwitchCase="0">
-        Tetsu Kasuya, the 2016 World Brewers Cup champion, is renowned for his
-        innovative and precise approach to coffee brewing. The 4:6 Method is his
-        unique pour-over technique, designed to control and manipulate the
-        coffee's taste profile by adjusting the ratio of water poured during
-        different stages of the brewing process. This method allows coffee
-        enthusiasts to fine-tune the acidity and sweetness of their cup,
-        resulting in a more customized and flavorful experience.
-        <br /><br />
-        <h6>Steps for Tetsu Kasuya's 4:6 Method:</h6>
-        <ol>
-          <li *ngFor="let item of tetsuKasuyaMethod">{{ item }} <br /></li>
-        </ol>
+        <app-tetsu-kasuya-method></app-tetsu-kasuya-method>
+        
       </div>
       <div *ngSwitchCase="1">put</div>
       <div *ngSwitchCase="2">out</div>
@@ -56,136 +46,6 @@
       <div *ngSwitchDefault></div>
     </div>
 
-    <div class="container-flex">
-      <h5>Choose flavour</h5>
-      <div class="form-group">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="group1"
-            id="flexRadioDefault1"
-          />
-          <label class="form-check-label" for="flexRadioDefault1">
-            Standard
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="group1"
-            id="flexRadioDefault2"
-          />
-          <label class="form-check-label" for="flexRadioDefault2">
-            Sweeter
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="group1"
-            id="flexRadioDefault1"
-          />
-          <label class="form-check-label" for="flexRadioDefault1">
-            Brighter
-          </label>
-        </div>
-      </div>
-
-      <h5>Choose intensity</h5>
-      <div class="form-group">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="group2"
-            id="flexRadioDefault2"
-          />
-          <label class="form-check-label" for="flexRadioDefault2">
-            Lighter
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="group2"
-            id="flexRadioDefault1"
-          />
-          <label class="form-check-label" for="flexRadioDefault1">
-            Stronger
-          </label>
-        </div>
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="radio"
-            name="group2"
-            id="flexRadioDefault2"
-          />
-          <label class="form-check-label" for="flexRadioDefault2">
-            Strongest
-          </label>
-        </div>
-      </div>
-      <br />
-      <div class="mb-3">
-        <label for="" class="form-label">Enter ammount of water:</label>
-        <input
-          type="number"
-          [(ngModel)]="wholeBrew"
-          class="form-control"
-          name=""
-          id=""
-          aria-describedby="helpId"
-          placeholder=""
-        />
-        <small id="helpId" class="form-text text-muted">Help text</small>
-      </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Pour</th>
-            <th scope="col">Time</th>
-            <th scope="col">Water Added</th>
-            <th scope="col">Cumulative Water</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>0:00-0:45</td>
-            <td>{{ wholeBrew / 5 }}g</td>
-            <td>{{ wholeBrew / 5 }}g</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>0:45-1:30</td>
-            <td>{{ wholeBrew / 5 }}g</td>
-            <td>{{ (wholeBrew * 2) / 5 }}g</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>1:30-2:15</td>
-            <td>{{ wholeBrew / 5 }}g</td>
-            <td>{{ (wholeBrew * 3) / 5 }}g</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>2:15-3:00</td>
-            <td>{{ wholeBrew / 5 }}g</td>
-            <td>{{ (wholeBrew * 4) / 5 }}g</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>3:00-3:45</td>
-            <td>{{ wholeBrew / 5 }}g</td>
-            <td>{{ wholeBrew }}g</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    
   </div>
 </div>

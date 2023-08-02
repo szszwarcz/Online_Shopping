@@ -14,6 +14,7 @@ import { FrenchPressComponent } from './french-press/french-press.component';
 import { MochaPotComponent } from './mocha-pot/mocha-pot.component';
 import { AreoPressComponent } from './areo-press/areo-press.component';
 import { TurkishCoffeeComponent } from './turkish-coffee/turkish-coffee.component';
+import { TetsuKasuyaMethodComponent } from './v60/tetsu-kasuya-method/tetsu-kasuya-method.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { TurkishCoffeeComponent } from './turkish-coffee/turkish-coffee.componen
     MochaPotComponent,
     AreoPressComponent,
     TurkishCoffeeComponent,
+    TetsuKasuyaMethodComponent,
   ],
   imports: [
     BrowserModule,
