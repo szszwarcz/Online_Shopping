@@ -27,8 +27,8 @@ experience. <br /><br />
         />
       </div>
       <div class="d-flex justify-content-between">
-        <span>Sweeter {{wholeBrew/10}}g</span>
-        <span>More Acidic {{wholeBrew/10*3}}g</span>
+        <span>Sweeter {{ wholeBrew / 10 }}g</span>
+        <span>More Acidic {{ (wholeBrew / 10) * 3 }}g</span>
       </div>
     </div>
     <div class="col">
@@ -51,16 +51,18 @@ experience. <br /><br />
       </div>
     </div>
   </div>
-  <br>
-  <br>
+  <br />
+  <br />
   <div class="row-cols-3">
     <div class="col">
-        <p>Selected ammount of water for the first pour: {{wholeBrew*firstPourWater/30}}g</p>
+      <p>
+        Selected ammount of water for the first pour:
+        {{ (wholeBrew * firstPourWater) / 30 }}g
+      </p>
     </div>
     <div>
-        <p>Selected ammount of pours: {{noOfPours}}</p>
+      <p>Selected ammount of pours: {{ noOfPours }}</p>
     </div>
-
   </div>
   <br />
   <div class="mb-3">
@@ -88,45 +90,102 @@ experience. <br /><br />
         <th scope="col">Cumulative Water</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="noOfPours == 2">
       <tr>
         <th scope="row">1</th>
         <td>0:00-0:45</td>
-        <td>{{wholeBrew*firstPourWater/30}}g</td>
-        <td>{{wholeBrew*firstPourWater/30}}g</td>
+        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
+        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
       </tr>
       <tr>
         <th scope="row">2</th>
         <td>0:45-1:30</td>
-        <td>{{wholeBrew/5*2-(wholeBrew*firstPourWater/30)}}g</td>
+        <td>{{ (wholeBrew / 5) * 2 - (wholeBrew * firstPourWater) / 30 }}g</td>
         <td>{{ (wholeBrew * 2) / 5 }}g</td>
       </tr>
-      
       <tr>
         <th scope="row">3</th>
-        <td>{{wholeBrew}</td>
+        <td>1:30-2:30</td>
+        <td>{{ (wholeBrew - 120) / 2 }}g</td>
+        <td>{{ (wholeBrew - 120) / 2 + 120 }}g</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>2:30-3:30</td>
+        <td>{{ (wholeBrew - 120) / 2 }}g</td>
+        <td>{{ wholeBrew }}g</td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="noOfPours == 3">
+      <tr>
+        <th scope="row">1</th>
+        <td>0:00-0:45</td>
+        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
+        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>0:45-1:30</td>
+        <td>{{ (wholeBrew / 5) * 2 - (wholeBrew * firstPourWater) / 30 }}g</td>
+        <td>{{ (wholeBrew * 2) / 5 }}g</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>1:30-2:10</td>
         <td>{{ wholeBrew / 5 }}g</td>
         <td>{{ (wholeBrew * 3) / 5 }}g</td>
       </tr>
       <tr>
         <th scope="row">4</th>
-        <td>2:15-3:00</td>
+        <td>2:10-2:50</td>
         <td>{{ wholeBrew / 5 }}g</td>
         <td>{{ (wholeBrew * 4) / 5 }}g</td>
       </tr>
-      <tr *ngIf="noOfPours==3||noOfPours==4">
+      <tr>
         <th scope="row">5</th>
-        <td>3:00-3:45</td>
-        <td>{{ wholeBrew / 5 }}g</td>
-        <td>{{ wholeBrew }}g</td>
-      </tr>
-      <tr *ngIf="noOfPours==4">
-        <th scope="row">6</th>
-        <td>3:00-3:45</td>
+        <td>2:50-3:30</td>
         <td>{{ wholeBrew / 5 }}g</td>
         <td>{{ wholeBrew }}g</td>
       </tr>
     </tbody>
+    <tbody *ngIf="noOfPours == 4">
+      <tr>
+        <th scope="row">1</th>
+        <td>0:00-0:45</td>
+        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
+        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>0:45-1:30</td>
+        <td>{{ (wholeBrew / 5) * 2 - (wholeBrew * firstPourWater) / 30 }}g</td>
+        <td>{{ (wholeBrew * 2) / 5 }}g</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>1:30-2:00</td>
+        <td>{{ (wholeBrew - 120) / 4 }}g</td>
+        <td>{{ (wholeBrew - 120) / 4 + 120 }}g</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>2:00-2:30</td>
+        <td>{{ (wholeBrew - 120) / 4 }}g</td>
+        <td>{{ ((wholeBrew - 120) / 4) * 2 + 120 }}g</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>2:30-3:00</td>
+        <td>{{ (wholeBrew - 120) / 4 }}g</td>
+        <td>{{ ((wholeBrew - 120) / 4) * 3 + 120 }}g</td>
+      </tr>
+      <tr *ngIf="noOfPours == 4">
+        <th scope="row">6</th>
+        <td>3:00-3:30</td>
+        <td>{{ (wholeBrew - 120) / 4 }}g</td>
+        <td>{{ wholeBrew }}g</td>
+      </tr>
+    </tbody>
   </table>
-  <br><br><br>
+  <br /><br /><br />
 </div>

@@ -22,8 +22,13 @@ export class TetsuKasuyaMethodComponent {
   ammoutOfCoffee:number = this.wholeBrew/15;
   firstPourWater:number = 6;
   noOfPours:number = 3;
-
-  bt:BrewTime = new BrewTime(3,45);
+  bt:BrewTime = new BrewTime(2,15);
+  resultFnc():string {
+    this.bt.devideBy(this.noOfPours);
+    this.bt.multiply(3);
+    return this.bt.displayDate();
+  }
+  result:string = this.resultFnc();
 }
 
 
