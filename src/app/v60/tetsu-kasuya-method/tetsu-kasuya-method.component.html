@@ -1,191 +1,223 @@
-Tetsu Kasuya, the 2016 World Brewers Cup champion, is renowned for his
-innovative and precise approach to coffee brewing. The 4:6 Method is his unique
-pour-over technique, designed to control and manipulate the coffee's taste
-profile by adjusting the ratio of water poured during different stages of the
-brewing process. This method allows coffee enthusiasts to fine-tune the acidity
-and sweetness of their cup, resulting in a more customized and flavorful
-experience. <br /><br />
-<h6>Steps for Tetsu Kasuya's 4:6 Method:</h6>
-<ol>
-  <li *ngFor="let item of tetsuKasuyaMethod">{{ item }} <br /></li>
-</ol>
-
+<div class="container-flex border-bottom">
+  <p>
+    Tetsu Kasuya, the 2016 World Brewers Cup champion, is renowned for his
+    innovative and precise approach to coffee brewing. The 4:6 Method is his
+    unique pour-over technique, designed to control and manipulate the coffee's
+    taste profile by adjusting the ratio of water poured during different stages
+    of the brewing process. This method allows coffee enthusiasts to fine-tune
+    the acidity and sweetness of their cup, resulting in a more customized and
+    flavorful experience.
+  </p>
+</div>
+<br />
+<div class="container-flex border-bottom">
+  <h5>Steps for Tetsu Kasuya's 4:6 Method:</h5>
+  <ol>
+    <li *ngFor="let item of tetsuKasuyaMethod">{{ item }} <br /></li>
+  </ol>
+</div>
+<br />
 <div class="container-flex">
+  <h5>Brew variables:</h5>
+  <br>
   <div class="row row-cols-3">
     <div class="col">
       <div class="form-group">
-        <label class="form-label" for="slider"
-          >Choose flavour (Ammount of water in the firstpour)</label
-        >
+        <label for="" class="form-label">Choose ammount of water:</label>
         <input
-          type="range"
-          class="form-range"
-          id="slider"
-          min="3"
-          max="9"
-          [(ngModel)]="firstPourWater"
+          type="number"
+          class="form-control"
+          name=""
+          id=""
+          aria-describedby="helpId"
+          placeholder=""
+          [(ngModel)]="wholeBrew"
         />
-      </div>
-      <div class="d-flex justify-content-between">
-        <span>Sweeter {{ wholeBrew / 10 }}g</span>
-        <span>More Acidic {{ (wholeBrew / 10) * 3 }}g</span>
+        <br />
+        <small id="helpId" class="form-text text-muted" [(ngModel)]="wholeBrew"
+          >For {{ wholeBrew }}g of water, you should use
+          {{ roundValue(wholeBrew / 15) }}g of coffee</small
+        >
       </div>
     </div>
-    <div class="col">
-      <div class="form-group">
-        <label class="form-label" for="slider"
-          >Choose intensity (no of the 60% pours)</label
-        >
-        <input
-          type="range"
-          class="form-range"
-          id="slider"
-          min="2"
-          max="4"
-          [(ngModel)]="noOfPours"
-        />
+  </div>
+  <br />
+  <div class="container-flex border-bottom">
+    <div class="row row-cols-3">
+      <div class="col">
+        <div class="form-group">
+          <label class="form-label" for="slider"
+            >Choose flavour (Selected ammount
+            {{ roundValue((wholeBrew * firstPourWater) / 30) }}g)</label
+          >
+          <input
+            type="range"
+            class="form-range"
+            id="slider"
+            min="3"
+            max="9"
+            [(ngModel)]="firstPourWater"
+          />
+        </div>
         <div class="d-flex justify-content-between">
-          <span>Lighter: 2</span>
-          <span>Stronger: 4</span>
+          <span>Sweeter {{ roundValue(wholeBrew / 10) }}g</span>
+          <span>More Acidic {{ roundValue((wholeBrew / 10) * 3) }}g</span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label class="form-label" for="slider"
+            >Choose intensity (Selected ammount of pours:
+            {{ noOfPours }})</label
+          >
+          <input
+            type="range"
+            class="form-range"
+            id="slider"
+            min="2"
+            max="4"
+            [(ngModel)]="noOfPours"
+          />
+          <div class="d-flex justify-content-between">
+            <span>Lighter: 2</span>
+            <span>Stronger: 4</span>
+          </div>
         </div>
       </div>
     </div>
+    <br>
   </div>
   <br />
-  <br />
-  <div class="row-cols-3">
-    <div class="col">
-      <p>
-        Selected ammount of water for the first pour:
-        {{ (wholeBrew * firstPourWater) / 30 }}g
-      </p>
+  <div class="container-flex">
+    <h5>Calculaterd pour table:</h5>
+    <div class="row row-cols-2">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Pour</th>
+              <th scope="col">Time</th>
+              <th scope="col">Water Added</th>
+              <th scope="col">Cumulative Water</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="noOfPours == 2">
+            <tr>
+              <th scope="row">1</th>
+              <td>0:00-0:45</td>
+              <td>{{ roundValue((wholeBrew * firstPourWater) / 30) }}g</td>
+              <td>{{ roundValue((wholeBrew * firstPourWater) / 30) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>0:45-1:30</td>
+              <td>
+                {{
+                  roundValue(
+                    (wholeBrew / 5) * 2 - (wholeBrew * firstPourWater) / 30
+                  )
+                }}g
+              </td>
+              <td>{{ roundValue((wholeBrew * 2) / 5) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>1:30-2:30</td>
+              <td>{{ roundValue((wholeBrew - 120) / 2) }}g</td>
+              <td>{{ roundValue((wholeBrew - 120) / 2 + 120) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>2:30-3:30</td>
+              <td>{{ roundValue((wholeBrew - 120) / 2) }}g</td>
+              <td>{{ wholeBrew }}g</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="noOfPours == 3">
+            <tr>
+              <th scope="row">1</th>
+              <td>0:00-0:45</td>
+              <td>{{ roundValue((wholeBrew * firstPourWater) / 30) }}g</td>
+              <td>{{ roundValue((wholeBrew * firstPourWater) / 30) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>0:45-1:30</td>
+              <td>
+                {{
+                  roundValue(
+                    (wholeBrew / 5) * 2 - (wholeBrew * firstPourWater) / 30
+                  )
+                }}g
+              </td>
+              <td>{{ roundValue((wholeBrew * 2) / 5) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>1:30-2:10</td>
+              <td>{{ roundValue(wholeBrew / 5) }}g</td>
+              <td>{{ roundValue((wholeBrew * 3) / 5) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>2:10-2:50</td>
+              <td>{{ roundValue(wholeBrew / 5) }}g</td>
+              <td>{{ roundValue((wholeBrew * 4) / 5) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>2:50-3:30</td>
+              <td>{{ wholeBrew / 5 }}g</td>
+              <td>{{ wholeBrew }}g</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="noOfPours == 4">
+            <tr>
+              <th scope="row">1</th>
+              <td>0:00-0:45</td>
+              <td>{{ roundValue((wholeBrew * firstPourWater) / 30) }}g</td>
+              <td>{{ roundValue((wholeBrew * firstPourWater) / 30) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>0:45-1:30</td>
+              <td>
+                {{
+                  roundValue(
+                    (wholeBrew / 5) * 2 - (wholeBrew * firstPourWater) / 30
+                  )
+                }}g
+              </td>
+              <td>{{ roundValue((wholeBrew * 2) / 5) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>1:30-2:00</td>
+              <td>{{ roundValue((wholeBrew - 120) / 4) }}g</td>
+              <td>{{ roundValue((wholeBrew - 120) / 4 + 120) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>2:00-2:30</td>
+              <td>{{ roundValue((wholeBrew - 120) / 4) }}g</td>
+              <td>{{ roundValue(((wholeBrew - 120) / 4) * 2 + 120) }}g</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>2:30-3:00</td>
+              <td>{{ roundValue((wholeBrew - 120) / 4) }}g</td>
+              <td>{{ roundValue(((wholeBrew - 120) / 4) * 3 + 120) }}g</td>
+            </tr>
+            <tr *ngIf="noOfPours == 4">
+              <th scope="row">6</th>
+              <td>3:00-3:30</td>
+              <td>{{ roundValue((wholeBrew - 120) / 4) }}g</td>
+              <td>{{ wholeBrew }}g</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div>
-      <p>Selected ammount of pours: {{ noOfPours }}</p>
-    </div>
   </div>
   <br />
-  <div class="mb-3">
-    <label for="" class="form-label">Enter ammount of water:</label>
-    <input
-      type="number"
-      class="form-control"
-      name=""
-      id=""
-      aria-describedby="helpId"
-      placeholder=""
-      [(ngModel)]="wholeBrew"
-    />
-    <small id="helpId" class="form-text text-muted"
-      >For {{ wholeBrew }}g of water, you should use {{ ammoutOfCoffee }}g of
-      coffee</small
-    >
-  </div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Pour</th>
-        <th scope="col">Time</th>
-        <th scope="col">Water Added</th>
-        <th scope="col">Cumulative Water</th>
-      </tr>
-    </thead>
-    <tbody *ngIf="noOfPours == 2">
-      <tr>
-        <th scope="row">1</th>
-        <td>0:00-0:45</td>
-        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
-        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>0:45-1:30</td>
-        <td>{{ (wholeBrew / 5) * 2 - (wholeBrew * firstPourWater) / 30 }}g</td>
-        <td>{{ (wholeBrew * 2) / 5 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>1:30-2:30</td>
-        <td>{{ (wholeBrew - 120) / 2 }}g</td>
-        <td>{{ (wholeBrew - 120) / 2 + 120 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>2:30-3:30</td>
-        <td>{{ (wholeBrew - 120) / 2 }}g</td>
-        <td>{{ wholeBrew }}g</td>
-      </tr>
-    </tbody>
-    <tbody *ngIf="noOfPours == 3">
-      <tr>
-        <th scope="row">1</th>
-        <td>0:00-0:45</td>
-        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
-        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>0:45-1:30</td>
-        <td>{{ (wholeBrew / 5) * 2 - (wholeBrew * firstPourWater) / 30 }}g</td>
-        <td>{{ (wholeBrew * 2) / 5 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>1:30-2:10</td>
-        <td>{{ wholeBrew / 5 }}g</td>
-        <td>{{ (wholeBrew * 3) / 5 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>2:10-2:50</td>
-        <td>{{ wholeBrew / 5 }}g</td>
-        <td>{{ (wholeBrew * 4) / 5 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">5</th>
-        <td>2:50-3:30</td>
-        <td>{{ wholeBrew / 5 }}g</td>
-        <td>{{ wholeBrew }}g</td>
-      </tr>
-    </tbody>
-    <tbody *ngIf="noOfPours == 4">
-      <tr>
-        <th scope="row">1</th>
-        <td>0:00-0:45</td>
-        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
-        <td>{{ (wholeBrew * firstPourWater) / 30 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>0:45-1:30</td>
-        <td>{{ (wholeBrew / 5) * 2 - (wholeBrew * firstPourWater) / 30 }}g</td>
-        <td>{{ (wholeBrew * 2) / 5 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>1:30-2:00</td>
-        <td>{{ (wholeBrew - 120) / 4 }}g</td>
-        <td>{{ (wholeBrew - 120) / 4 + 120 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>2:00-2:30</td>
-        <td>{{ (wholeBrew - 120) / 4 }}g</td>
-        <td>{{ ((wholeBrew - 120) / 4) * 2 + 120 }}g</td>
-      </tr>
-      <tr>
-        <th scope="row">5</th>
-        <td>2:30-3:00</td>
-        <td>{{ (wholeBrew - 120) / 4 }}g</td>
-        <td>{{ ((wholeBrew - 120) / 4) * 3 + 120 }}g</td>
-      </tr>
-      <tr *ngIf="noOfPours == 4">
-        <th scope="row">6</th>
-        <td>3:00-3:30</td>
-        <td>{{ (wholeBrew - 120) / 4 }}g</td>
-        <td>{{ wholeBrew }}g</td>
-      </tr>
-    </tbody>
-  </table>
-  <br /><br /><br />
 </div>

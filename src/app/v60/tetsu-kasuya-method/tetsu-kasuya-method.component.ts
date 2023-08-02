@@ -2,6 +2,7 @@ import { BrewTime } from './../../brew-time';
 import { Component } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
+
 @Component({
   selector: 'app-tetsu-kasuya-method',
   templateUrl: './tetsu-kasuya-method.component.html',
@@ -19,7 +20,6 @@ export class TetsuKasuyaMethodComponent {
     "Serve and Savor: Remove the V60 dripper, and your coffee is now ready to be served. Take a moment to appreciate the well-balanced flavors that the 4:6 Method has unlocked in your cup.",
   ];
   wholeBrew:number=300;
-  ammoutOfCoffee:number = this.wholeBrew/15;
   firstPourWater:number = 6;
   noOfPours:number = 3;
   bt:BrewTime = new BrewTime(2,15);
@@ -28,7 +28,11 @@ export class TetsuKasuyaMethodComponent {
     this.bt.multiply(3);
     return this.bt.displayDate();
   }
+  coffeeWeigh: number = this.wholeBrew/15;
   result:string = this.resultFnc();
+  roundValue(toRound:number):number{
+    return Math.round(toRound);
+  }
 }
 
 
