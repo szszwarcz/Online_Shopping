@@ -1,0 +1,63 @@
+<div class="container-flex border-bottom">
+  <p>
+    Indulge in the timeless art of coffee preparation with the Classic V60
+    Pour-Over method. A symphony of simplicity and precision, this technique
+    invites you to savor the true essence of your coffee beans. As water flows
+    gracefully through the V60 dripper, it orchestrates an exquisite extraction,
+    producing a cup that's both nuanced and balanced. Join us as we explore the
+    steps of the Classic V60 Pour-Over, a ritual that transforms the ordinary
+    into an extraordinary coffee experience.
+  </p>
+</div>
+<br />
+<div class="container-flex border-bottom">
+  <h5>Steps for Classic V60 Pour-Over Breving Method:</h5>
+  <ol>
+    <li *ngFor="let item of classicV60Recipe">{{ item }} <br /></li>
+  </ol>
+</div>
+<br />
+<div class="container-flex border-bottom">
+  <div class="row row-cols-3">
+    <div class="col">
+      <div class="form-group">
+        <label for="" class="form-label">Choose ammount of water:</label>
+        <input
+          type="number"
+          class="form-control"
+          name=""
+          id=""
+          aria-describedby="helpId"
+          placeholder=""
+          [(ngModel)]="wholeBrew"
+        />
+        <br />
+        <small id="helpId" class="form-text text-muted" [(ngModel)]="wholeBrew"
+          >For {{ wholeBrew }}g of water, you should use
+          {{ roundValue(wholeBrew / 16.5) }}g of coffee</small
+        >
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="slider"
+          >Adjust blooming pour (Selected ammount
+          {{ roundValue(firstPourWater) }}g)</label
+        >
+        <input
+          type="range"
+          class="form-range"
+          id="slider"
+          min="{{ roundValue((wholeBrew / 25) * 3) }}"
+          max="{{ roundValue(wholeBrew / 6.25) }}"
+          value="{{ wholeBrew / 7.15 }}"
+          [(ngModel)]="firstPourWater"
+        />
+      </div>
+      <div class="d-flex justify-content-between">
+        <span>Sweeter {{ roundValue((wholeBrew / 25) * 3) }}g</span>
+        <span>More Acidic {{ roundValue(wholeBrew / 6.25) }}g</span>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>
+<br />

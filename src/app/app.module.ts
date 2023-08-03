@@ -16,6 +16,9 @@ import { AreoPressComponent } from './areo-press/areo-press.component';
 import { TurkishCoffeeComponent } from './turkish-coffee/turkish-coffee.component';
 import { TetsuKasuyaMethodComponent } from './v60/tetsu-kasuya-method/tetsu-kasuya-method.component';
 import { JamesHoffmanMethodComponent } from './james-hoffman-method/james-hoffman-method.component';
+import { ClassicV60MethodComponent } from './classic-v60-method/classic-v60-method.component';
+import { IceV60Component } from './ice-v60/ice-v60.component';
+import { RaoSpinMethodComponent } from './rao-spin-method/rao-spin-method.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { JamesHoffmanMethodComponent } from './james-hoffman-method/james-hoffma
     TurkishCoffeeComponent,
     TetsuKasuyaMethodComponent,
     JamesHoffmanMethodComponent,
+    ClassicV60MethodComponent,
+    IceV60Component,
+    RaoSpinMethodComponent,
   ],
   imports: [
     BrowserModule,

@@ -27,17 +27,16 @@
     <div class="row row-cols-3">
       <div class="col">
         <select
-        [(ngModel)]="selectedMethod"
-        class="form-select"
-        aria-label="Select V60 method"
-      >
-        <option *ngFor="let method of V60Methods" [value]="method">
-          {{ method }}
-        </option>
-      </select>
+          [(ngModel)]="selectedMethod"
+          class="form-select"
+          aria-label="Select V60 method"
+        >
+          <option *ngFor="let method of V60Methods" [value]="method">
+            {{ method }}
+          </option>
+        </select>
       </div>
     </div>
-    
     <br />
     <div [ngSwitch]="V60Methods.indexOf(selectedMethod)">
       <div class="container-flex" *ngSwitchCase="0">
@@ -46,9 +45,13 @@
       <div *ngSwitchCase="1">
         <app-james-hoffman-method></app-james-hoffman-method>
       </div>
-      <div *ngSwitchCase="2">out</div>
-      <div *ngSwitchCase="3">put</div>
-      <div *ngSwitchCase="4">out</div>
+      <div *ngSwitchCase="2">
+        <app-classic-v60-method></app-classic-v60-method>
+      </div>
+      <div *ngSwitchCase="3">
+        <app-rao-spin-method></app-rao-spin-method>
+      </div>
+      <div *ngSwitchCase="4"><app-ice-v60></app-ice-v60></div>
       <div *ngSwitchDefault></div>
     </div>
   </div>
