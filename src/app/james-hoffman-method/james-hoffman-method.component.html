@@ -1,0 +1,101 @@
+<div class="container-flex border-bottom">
+  <p>
+    Embark on a journey of coffee refinement with the renowned James Hoffmann's
+    V60 method. As a World Barista Champion, Hoffmann's approach to brewing is
+    both an art and a science. The James Hoffmann V60 method is an elegant and
+    meticulous process that promises to unlock the full potential of your coffee
+    beans. Through a strategic series of steps, you'll discover a realm of
+    flavors, textures, and aromas that will redefine your coffee experience.
+    Join us as we delve into the step-by-step process of brewing the perfect cup
+    using James Hoffmann's acclaimed V60 technique.
+  </p>
+</div>
+<br />
+<div class="container-flex border-bottom">
+  <h5>Steps for James Hoffman's V60 Breving Method:</h5>
+  <ol>
+    <li *ngFor="let item of jamesHoffmansMethodSteps">{{ item }} <br /></li>
+  </ol>
+</div>
+<br />
+<div class="container-flex border-bottom">
+  <div class="row row-cols-3">
+    <div class="col">
+      <div class="form-group">
+        <label for="" class="form-label">Choose ammount of water:</label>
+        <input
+          type="number"
+          class="form-control"
+          name=""
+          id=""
+          aria-describedby="helpId"
+          placeholder=""
+          [(ngModel)]="wholeBrew"
+        />
+        <br />
+        <small id="helpId" class="form-text text-muted" [(ngModel)]="wholeBrew"
+          >For {{ wholeBrew }}g of water, you should use
+          {{ roundValue(wholeBrew / 16.5) }}g of coffee</small
+        >
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="slider"
+          >Adjust blooming pour (Selected ammount
+          {{ roundValue(firstPourWater) }}g)</label
+        >
+        <input
+          type="range"
+          class="form-range"
+          id="slider"
+          min="{{ roundValue((wholeBrew / 25) * 3) }}"
+          max="{{ roundValue(wholeBrew / 6.25) }}"
+          value="{{ wholeBrew / 7.15 }}"
+          [(ngModel)]="firstPourWater"
+        />
+      </div>
+      <div class="d-flex justify-content-between">
+        <span>Sweeter {{ roundValue((wholeBrew / 25) * 3) }}g</span>
+        <span>More Acidic {{ roundValue(wholeBrew / 6.25) }}g</span>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>
+<br />
+<div class="container-flex border-bottom">
+  <div class="row row-cols-2">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Pour</th>
+            <th scope="col">Time</th>
+            <th scope="col">Water Added</th>
+            <th scope="col">Cumulative Water</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>0:00-0:45</td>
+            <td>{{ roundValue(firstPourWater) }}g</td>
+            <td>{{ roundValue(firstPourWater) }}g</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>0:45-1:15</td>
+            <td>{{ roundValue((wholeBrew / 5) * 3 - firstPourWater) }}g</td>
+            <td>{{ roundValue((wholeBrew / 5) * 3) }}g</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>1:15-3:30</td>
+            <td>{{ roundValue(wholeBrew / 2.5) }}g</td>
+            <td>{{ roundValue(wholeBrew) }}g</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br />
+</div>

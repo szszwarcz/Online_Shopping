@@ -15,6 +15,7 @@ import { MochaPotComponent } from './mocha-pot/mocha-pot.component';
 import { AreoPressComponent } from './areo-press/areo-press.component';
 import { TurkishCoffeeComponent } from './turkish-coffee/turkish-coffee.component';
 import { TetsuKasuyaMethodComponent } from './v60/tetsu-kasuya-method/tetsu-kasuya-method.component';
+import { JamesHoffmanMethodComponent } from './james-hoffman-method/james-hoffman-method.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TetsuKasuyaMethodComponent } from './v60/tetsu-kasuya-method/tetsu-kasu
     AreoPressComponent,
     TurkishCoffeeComponent,
     TetsuKasuyaMethodComponent,
+    JamesHoffmanMethodComponent,
   ],
   imports: [
     BrowserModule,
