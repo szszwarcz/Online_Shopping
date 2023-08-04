@@ -15,83 +15,139 @@
 <button class="btn btn-primary" (click)="display()">Fetch data</button>
 
 -->
-<nav class="navbar navbar-expand-lg" style="background-color: #E7E3D7;">
-    <img src="../assets/Logo_Coffee.jpg" style="width: 60px;" alt="">
-  <a class="navbar-brand" href="#">Navbar w/ text</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-      Navbar text with an inline element
-    </span>
-  </div>
+<nav class="navbar navbar-expand-lg px-3" style="background-color: #e7e3d7">
+    <img src="../assets/Logo_Coffee.jpg" style="width: 60px" alt="" />
+    <a class="navbar-brand" href="#">Coffee Palace</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"
+            >Home <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Brewing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Shop</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav login-nav">
+        <li class="nav-item">
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#modal"
+            class="btn btn-primary bg-transparent text-black-50 border-0"
+          >
+            Login
+          </button>
+        </li>
+      </ul>
+    </div>
 </nav>
-<div class="container mx-auto rounded-3 text-dark">
-    <h3 *ngIf="!restCollapse" class="p-3">Choose your brewing method</h3>
-    <div *ngIf="!restCollapse" class="row row-cols-3">
-        <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)"
-            [vidSource]="sourceEspressoMachine" [brewingMethod]="espressoMachine"></app-cards>
-        <div class="col-sm" *ngIf="!restCollapse">
-            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)" [vidSource]="sourceV60"
-                [brewingMethod]="v60"></app-cards>
-        </div>
-        <div class="col-sm" *ngIf="!restCollapse">
-            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)"
-                [vidSource]="sourceFrenchPress" [brewingMethod]="frenchPress"></app-cards>
-        </div>
-        <div class="col-sm" *ngIf="!restCollapse">
-            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)"
-                [vidSource]="sourceAeroPress" [brewingMethod]="aeroPress"></app-cards>
-        </div>
-        <div class="col-sm" *ngIf="!restCollapse">
-            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)"
-                [vidSource]="sourceMochaPot" [brewingMethod]="mochaPot"></app-cards>
-        </div>
-        <div class="col-sm" *ngIf="!restCollapse">
-            <app-cards (nameEvent)="nameChange($event)" (colappseEvent)="colappseRest($event)"
-                [vidSource]="sourceTurkishCoffee" [brewingMethod]="turkishCoffee"></app-cards>
-        </div>
-    </div>
-    <div *ngIf="restCollapse">
-        <div class="col" *ngIf="methodName===espressoMachine || !restCollapse">
-            <button class="btn" (click)="restCollapse=!restCollapse">{{espressoMachine}}</button>
-            <app-espresso-machine></app-espresso-machine>
-        </div>
-        <div class="col" *ngIf="methodName===v60 || !restCollapse">
-            <app-v60></app-v60>
-            <button class="btn p-3" style=" font-size: larger; font-weight: 500;"
-                (click)="restCollapse=!restCollapse">
-                return
-            </button>
-        </div>
-        <div class="col" *ngIf="methodName===frenchPress || !restCollapse">
-            <button class="btn" (click)="restCollapse=!restCollapse">{{frenchPress}}</button>
-            <app-french-press></app-french-press>
-        </div>
-        <div class="col" *ngIf="methodName===aeroPress || !restCollapse">
-            <button class="btn" (click)="restCollapse=!restCollapse">{{aeroPress}}</button>
-            <app-areo-press></app-areo-press>
-        </div>
-        <div class="col" *ngIf="methodName===mochaPot || !restCollapse">
-            <button class="btn" (click)="restCollapse=!restCollapse">{{mochaPot}}</button>
-            <app-mocha-pot></app-mocha-pot>
-        </div>
-        <div class="col" *ngIf="methodName===turkishCoffee || !restCollapse">
-            <button class="btn" (click)="restCollapse=!restCollapse">{{turkishCoffee}}</button>
-            <app-turkish-coffee></app-turkish-coffee>
-        </div>
-    </div>
-</div>
 
+<div class="container mx-auto rounded-3 text-dark">
+  <h3 *ngIf="!restCollapse" class="p-3">Choose your brewing method</h3>
+  <div *ngIf="!restCollapse" class="row row-cols-3">
+    <app-cards
+      (nameEvent)="nameChange($event)"
+      (colappseEvent)="colappseRest($event)"
+      [vidSource]="sourceEspressoMachine"
+      [brewingMethod]="espressoMachine"
+    ></app-cards>
+    <div class="col-sm" *ngIf="!restCollapse">
+      <app-cards
+        (nameEvent)="nameChange($event)"
+        (colappseEvent)="colappseRest($event)"
+        [vidSource]="sourceV60"
+        [brewingMethod]="v60"
+      ></app-cards>
+    </div>
+    <div class="col-sm" *ngIf="!restCollapse">
+      <app-cards
+        (nameEvent)="nameChange($event)"
+        (colappseEvent)="colappseRest($event)"
+        [vidSource]="sourceFrenchPress"
+        [brewingMethod]="frenchPress"
+      ></app-cards>
+    </div>
+    <div class="col-sm" *ngIf="!restCollapse">
+      <app-cards
+        (nameEvent)="nameChange($event)"
+        (colappseEvent)="colappseRest($event)"
+        [vidSource]="sourceAeroPress"
+        [brewingMethod]="aeroPress"
+      ></app-cards>
+    </div>
+    <div class="col-sm" *ngIf="!restCollapse">
+      <app-cards
+        (nameEvent)="nameChange($event)"
+        (colappseEvent)="colappseRest($event)"
+        [vidSource]="sourceMochaPot"
+        [brewingMethod]="mochaPot"
+      ></app-cards>
+    </div>
+    <div class="col-sm" *ngIf="!restCollapse">
+      <app-cards
+        (nameEvent)="nameChange($event)"
+        (colappseEvent)="colappseRest($event)"
+        [vidSource]="sourceTurkishCoffee"
+        [brewingMethod]="turkishCoffee"
+      ></app-cards>
+    </div>
+  </div>
+  <div *ngIf="restCollapse">
+    <div class="col" *ngIf="methodName === espressoMachine || !restCollapse">
+      <button class="btn" (click)="restCollapse = !restCollapse">
+        {{ espressoMachine }}
+      </button>
+      <app-espresso-machine></app-espresso-machine>
+    </div>
+    <div class="col" *ngIf="methodName === v60 || !restCollapse">
+      <app-v60></app-v60>
+      <button
+        class="btn p-3"
+        style="font-size: larger; font-weight: 500"
+        (click)="restCollapse = !restCollapse"
+      >
+        return
+      </button>
+    </div>
+    <div class="col" *ngIf="methodName === frenchPress || !restCollapse">
+      <button class="btn" (click)="restCollapse = !restCollapse">
+        {{ frenchPress }}
+      </button>
+      <app-french-press></app-french-press>
+    </div>
+    <div class="col" *ngIf="methodName === aeroPress || !restCollapse">
+      <button class="btn" (click)="restCollapse = !restCollapse">
+        {{ aeroPress }}
+      </button>
+      <app-areo-press></app-areo-press>
+    </div>
+    <div class="col" *ngIf="methodName === mochaPot || !restCollapse">
+      <button class="btn" (click)="restCollapse = !restCollapse">
+        {{ mochaPot }}
+      </button>
+      <app-mocha-pot></app-mocha-pot>
+    </div>
+    <div class="col" *ngIf="methodName === turkishCoffee || !restCollapse">
+      <button class="btn" (click)="restCollapse = !restCollapse">
+        {{ turkishCoffee }}
+      </button>
+      <app-turkish-coffee></app-turkish-coffee>
+    </div>
+  </div>
+</div>
